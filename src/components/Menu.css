@@ -1,0 +1,27 @@
+button{
+    cursor: pointer;
+}
+.app-menu{
+    width: 30%;
+    height: 100vh;
+    border-right: 1px solid #ddd;
+}
+.app-menu-header{
+    display: flex;
+    justify-content: space-between;
+    padding: 25px;
+}
+
+.app-menu-header h1{
+    margin: 0;
+}
+
+.app-menu-notes{
+    height: calc(100vh-78px);
+    overflow-y:scroll;
+}
+
+.app-menu-notes{
+   padding: 25px; 
+   cursor:pointer;
+}
