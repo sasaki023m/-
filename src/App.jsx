@@ -1,34 +1,35 @@
 import './App.css';
 // import Order from './components/Order';
-// import Menu from './components/Menu';
+import Menu from './components/Menu';
 
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const App = () => {
   // coffee
   const [coffeeNum, setcoffeeNum] = useState(0);
-  const coffeeValue = coffeeNum * 480;
+  // const coffeeValue = coffeeNum * 480;
 
   // tee
   const [teeNum, setTeeNum] = useState(0);
-  const teeValue = teeNum * 280;
+  // const teeValue = teeNum * 280;
 
 
   // milk
   const [milkNum, setMilkNum] = useState(0);
-  const milkValue = milkNum * 180;
+  // const milkValue = milkNum * 180;
 
   // cola
   const [colaNum, setColaNum] = useState(0);
-  const colaValue = colaNum * 190;
+  // const colaValue = colaNum * 190;
 
   // beer
   const [beerNum, setBeerNum] = useState(0);
-  const beerValue = beerNum * 580;
+  // const beerValue = beerNum * 580;
 
   //　合計
-  const sumNum = coffeeNum + teeNum + milkNum + colaNum + beerNum;
-  const sumAccount = coffeeValue + teeValue + milkValue + colaValue + beerValue;
+  const [sumNum, setSumNum] = useState(0);
+  const [sumAccount, setSumAccount] = useState(0);
+  
 
   const onCoffeeCountUp = () => {
     setcoffeeNum(coffeeNum + 1);
@@ -46,17 +47,41 @@ const App = () => {
     setBeerNum(beerNum + 1);
   };
 
+useEffect(()=>{
+  // coffee
+  const coffeeValue = coffeeNum * 480;
+
+  // tee
+  const teeValue = teeNum * 280;
+
+
+  // milk
+  const milkValue = milkNum * 180;
+
+  // cola
+  const colaValue = colaNum * 190;
+
+  const beerValue = beerNum * 580;
+
+  //　合計
+  // const sumNum = coffeeNum +teeNum + milkNum + colaNum + beerNum;
+  setSumNum(coffeeNum +teeNum + milkNum + colaNum + beerNum);
+  setSumAccount(coffeeValue + teeValue + milkValue + colaValue + beerValue);
+
+  console.log(sumNum);
+},[coffeeNum,teeNum ,milkNum ,colaNum ,beerNum])
+
   return (
     <React.Fragment>
       <div className="app">
         <div className="menu">
-          <div className="menu-contents">
+          {/* <div className="menu-contents">
             <button onClick={onCoffeeCountUp}>
               Coffee 480円
             </button>
             <span>{coffeeNum}</span>
-          </div>
-
+          </div> */}
+          <Menu menuname="Coffee 480円" count={coffeeNum}/>
           <div className="menu-contents">
             <button onClick={onTeeCountUp}>
               Tee 280円
