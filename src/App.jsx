@@ -31,9 +31,9 @@ const App = () => {
   const [sumAccount, setSumAccount] = useState(0);
   
 
-  const onCoffeeCountUp = () => {
-    setcoffeeNum(coffeeNum + 1);
-  };
+//   const onCoffeeCountUp = () => {
+//     setcoffeeNum(coffeeNum + 1);
+//   };
   const onTeeCountUp = () => {
     setTeeNum(teeNum + 1);
   };
@@ -71,6 +71,7 @@ useEffect(()=>{
   console.log(sumNum);
   // eslint-disable-next-line react-hooks/exhaustive-deps
 },[coffeeNum,teeNum ,milkNum ,colaNum ,beerNum])
+
 
   return (
     <React.Fragment>
