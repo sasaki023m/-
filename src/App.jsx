@@ -31,9 +31,9 @@ const App = () => {
   const [sumAccount, setSumAccount] = useState(0);
   
 
-//   const onCoffeeCountUp = () => {
-//     setcoffeeNum(coffeeNum + 1);
-//   };
+  const onCoffeeCountUp = () => {
+    setcoffeeNum(coffeeNum + 1);
+  };
   const onTeeCountUp = () => {
     setTeeNum(teeNum + 1);
   };
