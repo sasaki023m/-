@@ -31,9 +31,9 @@ const App = () => {
   const [sumAccount, setSumAccount] = useState(0);
   
 
-  const onCoffeeCountUp = () => {
-    setcoffeeNum(coffeeNum + 1);
-  };
+//   const onCoffeeCountUp = () => {
+//     setcoffeeNum(coffeeNum + 1);
+//   };
   const onTeeCountUp = () => {
     setTeeNum(teeNum + 1);
   };
@@ -69,7 +69,7 @@ useEffect(()=>{
   setSumAccount(coffeeValue + teeValue + milkValue + colaValue + beerValue);
 
   console.log(sumNum);
-},[coffeeNum,teeNum ,milkNum ,colaNum ,beerNum])
+},[coffeeNum,teeNum ,milkNum ,colaNum ,beerNum,sumNum])
 
   return (
     <React.Fragment>
