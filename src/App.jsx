@@ -1,127 +1,43 @@
 import './App.css';
-// import Order from './components/Order';
-// import Menu from './components/Menu';
+// import Button from '@mui/material/Button';
+// import Badge from '@mui/material/Badge';
+// import Card from '@mui/material/Card';
+// import Typography from '@mui/material/Typography';
 
-import React, { useEffect, useState } from 'react';
+import Order from './components/Order';
+import Menu from './components/Menu';
+
+import React, { useState } from 'react';
 
 const App = () => {
-  // coffee
-  const [coffeeNum, setcoffeeNum] = useState(0);
-  // const coffeeValue = coffeeNum * 480;
-
-  // tee
-  const [teeNum, setTeeNum] = useState(0);
-  // const teeValue = teeNum * 280;
-
-
-  // milk
-  const [milkNum, setMilkNum] = useState(0);
-  // const milkValue = milkNum * 180;
-
-  // cola
-  const [colaNum, setColaNum] = useState(0);
-  // const colaValue = colaNum * 190;
-
-  // beer
-  const [beerNum, setBeerNum] = useState(0);
-  // const beerValue = beerNum * 580;
-
   //　合計
-  const [sumNum, setSumNum] = useState(0);
-  const [sumAccount, setSumAccount] = useState(0);
-  
-
-  const onCoffeeCountUp = () => {
-    setcoffeeNum(coffeeNum + 1);
-  };
-  const onTeeCountUp = () => {
-    setTeeNum(teeNum + 1);
-  };
-  const onMilkCountUp = () => {
-    setMilkNum(milkNum + 1);
-  };
-  const onColaCountUp = () => {
-    setColaNum(colaNum + 1);
-  };
-  const onBeerCountUp = () => {
-    setBeerNum(beerNum + 1);
-  };
-
-useEffect(()=>{
-  // coffee
-  const coffeeValue = coffeeNum * 480;
-
-  // tee
-  const teeValue = teeNum * 280;
-
-
-  // milk
-  const milkValue = milkNum * 180;
-
-  // cola
-  const colaValue = colaNum * 190;
-
-  const beerValue = beerNum * 580;
-
-  //　合計
-  // const sumNum = coffeeNum +teeNum + milkNum + colaNum + beerNum;
-  setSumNum(coffeeNum +teeNum + milkNum + colaNum + beerNum);
-  setSumAccount(coffeeValue + teeValue + milkValue + colaValue + beerValue);
-
-  console.log(sumNum);
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-},[coffeeNum,teeNum ,milkNum ,colaNum ,beerNum])
-
+  const [total,setTotal] = useState({count:0,amount:0});
 
   return (
     <React.Fragment>
       <div className="app">
+
         <div className="menu">
-          {/* <div className="menu-contents">
-            <button onClick={onCoffeeCountUp}>
-              Coffee 480円
-            </button>
-            <span>{coffeeNum}</span>
-          </div> */}
-          {/* <Menu menuname="Coffee 480円" count={coffeeNum}/> */}
-          <div className="menu-contents">
-            <button onClick={onCoffeeCountUp}>
-              Tee 280円
-            </button>
-            <span>{teeNum}</span>
-          </div>
-          <div className="menu-contents">
-            <button onClick={onTeeCountUp}>
-              Tee 280円
-            </button>
-            <span>{teeNum}</span>
-          </div>
-
-          <div className="menu-contents">
-            <button onClick={onMilkCountUp}>
-              Milk 180円
-            </button>
-            <span>{milkNum}</span>
-          </div>
-
-          <div className="menu-contents">
-            <button onClick={onColaCountUp}>
-              Cola 190円
-            </button>
-            <span>{colaNum}</span>
-          </div>
-
-          <div className="menu-contents">
-            <button onClick={onBeerCountUp}>
-              Beer 580円
-            </button>
-            <span>{beerNum}</span>
-          </div>
+           <Menu name = "Coffee" value= {480} setTotal={setTotal}/>
+           <Menu name = "Tea" value= {280} setTotal={setTotal}/>
+           <Menu name = "Milk" value= {180} setTotal={setTotal}/>
+           <Menu name = "Cola" value= {190} setTotal={setTotal}/>
+           <Menu name = "Beer" value= {580} setTotal={setTotal}/>          
         </div>
 
         <div className="order">
-          <p>合計: {sumNum}個</p>
-          <p>金額: {sumAccount}円</p>
+          <Order total={total}/>
+          {/* <Card variant="contained" color="secondary" sx={{ maxWidth: 300 }}>
+            <Typography sx={{ fontSize: 20 }} color="text.secondary" gutterBottom>
+              お会計
+            </Typography>
+            <Typography variant="body1" >
+              合計: {total.count}個
+            </Typography>
+            <Typography variant="body1" >
+              金額: {total.amount}円
+            </Typography>
+          </Card> */}
         </div>
       </div>
     </React.Fragment>
