@@ -1,8 +1,4 @@
 import './App.css';
-// import Button from '@mui/material/Button';
-// import Badge from '@mui/material/Badge';
-// import Card from '@mui/material/Card';
-// import Typography from '@mui/material/Typography';
 
 import Order from './components/Order';
 import Menu from './components/Menu';
@@ -27,17 +23,6 @@ const App = () => {
 
         <div className="order">
           <Order total={total}/>
-          {/* <Card variant="contained" color="secondary" sx={{ maxWidth: 300 }}>
-            <Typography sx={{ fontSize: 20 }} color="text.secondary" gutterBottom>
-              お会計
-            </Typography>
-            <Typography variant="body1" >
-              合計: {total.count}個
-            </Typography>
-            <Typography variant="body1" >
-              金額: {total.amount}円
-            </Typography>
-          </Card> */}
         </div>
       </div>
     </React.Fragment>
