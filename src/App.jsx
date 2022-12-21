@@ -2,7 +2,7 @@ import "./App.css";
 
 import Order from "./components/Order";
 import Menu from "./components/Menu";
-// import Detail from "./components/Detail";
+import Detail from "./components/Detail";
 
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -19,7 +19,7 @@ const App = () => {
   const [total, setTotal] = useState({ count: 0, amount: 0 });
 
   const items = [
-    { name: "Coofee", value: 480 },
+    { name: "Coffee", value: 480 },
     { name: "Tea", value: 280 },
     { name: "Milk", value: 180 },
     { name: "Cola", value: 190 },
@@ -79,11 +79,10 @@ const App = () => {
                     key={items.name}
                     sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
                   >
-                    {/* <Detail
-                      name={items[0].name}
-                      value={items[0].value}
-                      setTotal={setTotal}
-                    /> */}
+                    <Detail
+                      name={items.name}
+                      value={items.value}
+                    />
                   </TableRow>
                 ))}
               </TableBody>

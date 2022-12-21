@@ -8,9 +8,12 @@ import TableCell from "@mui/material/TableCell";
 
 const Detail = ({ name, value, setTotal }) => {
   return (
-    <TableCell component="th" scope="row">
-      {name}
-    </TableCell>
+    <div>
+      <TableCell component="th" scope="row">
+        {name}
+      </TableCell>
+      <TableCell>{value}</TableCell>
+    </div>
   );
 };
 
