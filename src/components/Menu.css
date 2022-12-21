@@ -12,10 +12,6 @@ button{
     padding: 25px;
 }
 
-.app-menu-header h1{
-    margin: 0;
-}
-
 .app-menu-notes{
     height: calc(100vh-78px);
     overflow-y:scroll;

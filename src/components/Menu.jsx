@@ -8,6 +8,7 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import IconButton from "@mui/material/IconButton";
 // import CoffeeIcon from "@mui/icons-material/Coffee";
 
+
 const Menu = ({ name, value, setTotal }) => {
   let [count, setCount ] = useState(0);
   const countUp = () => {
@@ -60,16 +61,6 @@ const Menu = ({ name, value, setTotal }) => {
   const countDown = () => {
     setCount((prevState) => prevState - 1);
 
-    if (count - 1 < 0) {
-      count = 0;
-      console.log(count);
-      setTotal((prevState) => ({
-        ...prevState,
-        count: 0,
-        amount: 0,
-      }));
-
-    } else {
       switch (name) {
         case "Coffee":
           setTotal((prevState) => ({
@@ -113,14 +104,13 @@ const Menu = ({ name, value, setTotal }) => {
           break;
         default:
           break;
-      }
     }
     console.log(count);
   };
 
   return (
     <div className="menu-contents">
-      <IconButton aria-label="remove" onClick={countDown}>
+      <IconButton aria-label="remove" disabled={count <= 0} onClick={countDown}>
         <RemoveIcon />
       </IconButton>
 
@@ -130,9 +120,10 @@ const Menu = ({ name, value, setTotal }) => {
         </Box>
       </Badge>
 
-      <IconButton aria-label="add" onClick={countUp}>
+      <IconButton aria-label="add" onClick={countUp} >
         <AddIcon />
       </IconButton>
+
     </div>
   );
 };
