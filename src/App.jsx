@@ -17,6 +17,7 @@ import React, { useState } from "react";
 const App = () => {
   //　合計
   const [total, setTotal] = useState({ count: 0, amount: 0 });
+  const [orderList, setOrderList] = useState([]);
 
   const items = [
     { name: "Coffee", value: 480 },
@@ -26,9 +27,6 @@ const App = () => {
     { name: "Beer", value: 580 },
   ];
 
-  // function createData(name, value, num, amount) {
-  //   return { name, value, num, amount };
-  // }
 
   return (
     <React.Fragment>
@@ -38,26 +36,36 @@ const App = () => {
             name={items[0].name}
             value={items[0].value}
             setTotal={setTotal}
+            orderList={orderList}
+            setOrderList={setOrderList}
           />
           <Menu
             name={items[1].name}
             value={items[1].value}
             setTotal={setTotal}
+            orderList={orderList}
+            setOrderList={setOrderList}
           />
           <Menu
             name={items[2].name}
             value={items[2].value}
             setTotal={setTotal}
+            orderList={orderList}
+            setOrderList={setOrderList}
           />
           <Menu
             name={items[3].name}
             value={items[3].value}
             setTotal={setTotal}
+            orderList={orderList}
+            setOrderList={setOrderList}
           />
           <Menu
             name={items[4].name}
             value={items[4].value}
             setTotal={setTotal}
+            orderList={orderList}
+            setOrderList={setOrderList}
           />
         </div>
 
@@ -66,24 +74,16 @@ const App = () => {
             <Table sx={{ minWidth: 450 }} aria-label="simple table">
               <TableHead>
                 <TableRow>
-                  <TableCell>商品</TableCell>
-                  <TableCell>値段</TableCell>
-                  <TableCell>数</TableCell>
-                  <TableCell align="right">金額</TableCell>
+                  <TableCell style={{ width: "25%" }}>商品</TableCell>
+                  <TableCell style={{ width: "25%" }} align="right">値段</TableCell>
+                  <TableCell style={{ width: "25%" }} align="right">数</TableCell>
+                  <TableCell style={{ width: "25%" }} align="right">金額</TableCell>
                 </TableRow>
               </TableHead>
 
               <TableBody>
-                {items.map((items) => (
-                  <TableRow
-                    key={items.name}
-                    sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                  >
-                    <Detail
-                      name={items.name}
-                      value={items.value}
-                    />
-                  </TableRow>
+                {orderList.map((items) => (
+                  <Detail {...items} />
                 ))}
               </TableBody>
             </Table>

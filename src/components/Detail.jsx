@@ -1,19 +1,27 @@
 // import React, { useState } from "react";
 import "./Menu.css";
 import TableCell from "@mui/material/TableCell";
+import TableRow from "@mui/material/TableRow";
 
-// function createData(name, value, num, amount) {
-//   return { name, value, num, amount };
-// }
-
-const Detail = ({ name, value, setTotal }) => {
+const Detail = ({ name, value, count }) => {
   return (
-    <div>
-      <TableCell component="th" scope="row">
+    <TableRow
+      key={name}
+      sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+    >
+      <TableCell style={{ width: "25%" }} component="th" scope="row">
         {name}
       </TableCell>
-      <TableCell>{value}</TableCell>
-    </div>
+      <TableCell style={{ width: "25%" }} align="right">
+        {value}
+      </TableCell>
+      <TableCell style={{ width: "25%" }} align="right">
+        {count}
+      </TableCell>
+      <TableCell style={{ width: "25%" }} align="right">
+        {count * value}
+      </TableCell>
+    </TableRow>
   );
 };
 

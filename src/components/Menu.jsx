@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Menu.css";
-import Box from '@mui/material/Box';
+import Box from "@mui/material/Box";
 // import Button from "@mui/material/Button";
 import Badge from "@mui/material/Badge";
 import AddIcon from "@mui/icons-material/Add";
@@ -8,124 +8,75 @@ import RemoveIcon from "@mui/icons-material/Remove";
 import IconButton from "@mui/material/IconButton";
 // import CoffeeIcon from "@mui/icons-material/Coffee";
 
+const Menu = React.memo(
+  ({ name, value, setTotal, orderList, setOrderList }) => {
+    const [count, setCount] = useState(0);
+    console.log(name, count);
+    const countUp = () => {
+      setCount((prevState) => prevState + 1);
+      setTotal((prevState) => ({
+        ...prevState,
+        count: prevState.count + 1,
+        amount: prevState.amount + value,
+      }));
+      const newOrderList = [...orderList];
+      // check name exist
+      if (newOrderList.filter((item) => item.name === name).length) {
+        newOrderList.forEach((item) => {
+          if (item.name === name) item.count = count + 1;
+        });
+      } else {
+        const newOrder = {
+          name: name,
+          value: value,
+          count: count + 1,
+        };
+        newOrderList.push(newOrder);
+      }
+      console.log("orderList", orderList);
+      setOrderList(newOrderList);
+    };
 
-const Menu = ({ name, value, setTotal }) => {
-  let [count, setCount ] = useState(0);
-  const countUp = () => {
-    setCount((prevState) => prevState + 1);
-    switch (name) {
-      case "Coffee":
-        setTotal((prevState) => ({
-          ...prevState,
-          count: prevState.count + 1,
-          amount: prevState.amount + value,
-        }));
-        break;
+    const countDown = () => {
+      setCount((prevState) => prevState - 1);
+      setTotal((prevState) => ({
+        ...prevState,
+        count: prevState.count - 1,
+        amount: prevState.amount - value,
+      }));
+      const newOrderList = [...orderList];
+      // check name exist
+      if (newOrderList.filter((item) => item.name === name).length) {
+        newOrderList.forEach((item) => {
+          if (item.name === name) item.count = count - 1;
+        });
+      }
+      console.log("orderList", orderList);
+      setOrderList(newOrderList.filter(item => item.count > 0));
+    };
 
-      case "Tea":
-        setTotal((prevState) => ({
-          ...prevState,
-          count: prevState.count + 1,
-          amount: prevState.amount + value,
-        }));
-        break;
+    return (
+      <div className="menu-contents">
+        <IconButton
+          aria-label="remove"
+          disabled={count <= 0}
+          onClick={countDown}
+        >
+          <RemoveIcon />
+        </IconButton>
 
-      case "Milk":
-        setTotal((prevState) => ({
-          ...prevState,
-          count: prevState.count + 1,
-          amount: prevState.amount + value,
-        }));
-        break;
+        <Badge badgeContent={count} color="error">
+          <Box component="span" sx={{ p: 2, border: "1px solid gray" }}>
+            {name} {value}円
+          </Box>
+        </Badge>
 
-      case "Cola":
-        setTotal((prevState) => ({
-          ...prevState,
-          count: prevState.count + 1,
-          amount: prevState.amount + value,
-        }));
-        break;
-
-      case "Beer":
-        setTotal((prevState) => ({
-          ...prevState,
-          count: prevState.count + 1,
-          amount: prevState.amount + value,
-        }));
-        break;
-      default:
-        break;
-    }
-  };
-
-  const countDown = () => {
-    setCount((prevState) => prevState - 1);
-
-      switch (name) {
-        case "Coffee":
-          setTotal((prevState) => ({
-            ...prevState,
-            count: prevState.count - 1,
-            amount: prevState.amount - value,
-          }));
-          console.log(count);
-          break;
-
-        case "Tea":
-          setTotal((prevState) => ({
-            ...prevState,
-            count: prevState.count - 1,
-            amount: prevState.amount - value,
-          }));
-          break;
-
-        case "Milk":
-          setTotal((prevState) => ({
-            ...prevState,
-            count: prevState.count - 1,
-            amount: prevState.amount - value,
-          }));
-          break;
-
-        case "Cola":
-          setTotal((prevState) => ({
-            ...prevState,
-            count: prevState.count - 1,
-            amount: prevState.amount - value,
-          }));
-          break;
-
-        case "Beer":
-          setTotal((prevState) => ({
-            ...prevState,
-            count: prevState.count - 1,
-            amount: prevState.amount - value,
-          }));
-          break;
-        default:
-          break;
-    }
-    console.log(count);
-  };
-
-  return (
-    <div className="menu-contents">
-      <IconButton aria-label="remove" disabled={count <= 0} onClick={countDown}>
-        <RemoveIcon />
-      </IconButton>
-
-      <Badge badgeContent={count} color="error">
-        <Box component="span" sx={{ p: 2, border: '1px solid gray' }} >
-          {name} {value}円
-        </Box>
-      </Badge>
-
-      <IconButton aria-label="add" onClick={countUp} >
-        <AddIcon />
-      </IconButton>
-
-    </div>
-  );
-};
+        <IconButton aria-label="add" onClick={countUp}>
+          <AddIcon />
+        </IconButton>
+      </div>
+    );
+  }
+);
 
 export default Menu;
