@@ -6,7 +6,6 @@ import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
-// import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 
@@ -41,13 +40,13 @@ const Detail = ({ orderList }) => {
           <TableRow>
             <StyledTableCell style={{ width: "25%" }}>商品</StyledTableCell>
             <StyledTableCell style={{ width: "25%" }} align="right">
-              値段
+              値段(円)
             </StyledTableCell>
             <StyledTableCell style={{ width: "25%" }} align="right">
-              数
+              数(個)
             </StyledTableCell>
             <StyledTableCell style={{ width: "25%" }} align="right">
-              金額
+              金額(円)
             </StyledTableCell>
           </TableRow>
         </TableHead>
@@ -75,24 +74,6 @@ const Detail = ({ orderList }) => {
          </TableBody>
        </Table>
      </TableContainer>
-
-    // <TableRow
-    //   key={name}
-    //   sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-    // >
-    //   <StyledTableRow style={{ width: "25%" }} component="th" scope="row">
-    //     {name}
-    //   </StyledTableRow>
-    //   <StyledTableRow style={{ width: "25%" }} align="right">
-    //     {value}
-    //   </StyledTableRow>
-    //   <StyledTableRow style={{ width: "25%" }} align="right">
-    //     {count}
-    //   </StyledTableRow>
-    //   <StyledTableRow style={{ width: "25%" }} align="right">
-    //     {count * value}
-    //   </StyledTableRow>
-    // </TableRow>
   );
 };
 

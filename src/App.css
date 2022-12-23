@@ -5,27 +5,29 @@
   font-size: 16px;
   padding: 20px;
   display: grid;
-  grid-template-columns: 25% 1fr;
-  grid-template-rows: 30% 1fr;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-rows: 60% auto;
   column-gap: 30px;
   row-gap: 30px;
 }
 .menu{
   grid-template-rows: 30% 1fr;
-  border-right: 1px solid #ddd;
+  
 }
 
 .details{
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
+}
+
+.order{
   grid-row: 2 / 2;
-  grid-column: 2 / 4;
+  grid-column: 2 / 3;
 }
 
 .menu-contents{
   padding: 20px;
   border: 1px solid #ddd;
+
 }
 
-button{
-  margin: 5px;
-  cursor: default;
-}
