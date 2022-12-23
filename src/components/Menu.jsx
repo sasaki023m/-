@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import "./Menu.css";
 import Box from "@mui/material/Box";
-// import Button from "@mui/material/Button";
 import Badge from "@mui/material/Badge";
 import AddIcon from "@mui/icons-material/Add";
 import RemoveIcon from "@mui/icons-material/Remove";
 import IconButton from "@mui/material/IconButton";
-// import CoffeeIcon from "@mui/icons-material/Coffee";
 
 const Menu = React.memo(
-  ({ name, value, setTotal, orderList, setOrderList }) => {
+  ({ name, value, icon, setTotal, orderList, setOrderList }) => {
     const [count, setCount] = useState(0);
     console.log(name, count);
     const countUp = () => {
@@ -65,9 +63,9 @@ const Menu = React.memo(
           <RemoveIcon />
         </IconButton>
 
-        <Badge badgeContent={count} color="error">
-          <Box component="span" sx={{ p: 2, border: "1px solid gray" }}>
-            {name} {value}円
+        <Badge badgeContent={count} color="warning">
+          <Box component="span" sx={{ p: 2, border: "1px solid #e65100", borderRadius: '5%'}}>
+          {icon} {name} {value}円
           </Box>
         </Badge>
 
