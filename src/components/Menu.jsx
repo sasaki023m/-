@@ -64,7 +64,7 @@ const Menu = React.memo(
         </IconButton>
 
         <Badge badgeContent={count} color="warning">
-          <Box component="span" sx={{ p: 2, border: "1px solid #e65100", borderRadius: '5%'}}>
+          <Box component="span" sx={{ p: 2, border: "1px solid #e65100", borderRadius: '5%', minWidth:120}}>
           {icon} {name} {value}円
           </Box>
         </Badge>
