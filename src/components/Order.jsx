@@ -46,7 +46,6 @@ const Order = ({ total }) => {
 
         <TableBody>
           <StyledTableRow
-            // key={items.name}
             sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
           >
             <StyledTableCell component="th" scope="row"  >
@@ -60,16 +59,6 @@ const Order = ({ total }) => {
         </TableBody>
       </Table>
     </TableContainer>
-
-    // <div>
-    //   <Box component="span" sx={{ p: 2, border: "1px solid gray" }}>
-    //     <div className="order-title">お会計</div>
-    //     <div className="order-contents">
-    //       商品数：{total.count}
-    //       合計金額：{total.amount}
-    //     </div>
-    //   </Box>
-    // </div>
   );
 };
 export default Order;
